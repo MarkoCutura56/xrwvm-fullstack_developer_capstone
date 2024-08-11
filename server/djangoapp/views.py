@@ -87,9 +87,9 @@ def registration(request):
 #Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
 def get_dealerships(request, state="All"):
     if(state == "All"):
-        endpoint = "/fetchDealers"
+        endpoint = '/fetchDealers/'
     else:
-        endpoint = "/fetchDealers/"+state
+        endpoint = '/fetchDealers/'+state
     dealerships = get_request(endpoint)
     return JsonResponse({"status":200,"dealers":dealerships})
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
