@@ -71,11 +71,13 @@ app.get('/fetchDealers', async (req, res) => {
 app.get('/fetchDealers/:state', async (req, res) => {
 //Write your code here
     try {
-        const documents = Dealerships.filter((element)=>{element.state == req.params.state});
+        //const documents = await Dealerships.filter((element) => {element.state == req.params.state});
+        const documents = await Dealerships.find({state: req.params.state});
+
         res.json(documents);
-        
-    } catch (error) {
-        res.status(500).json({ error: 'Error fetching documents' });
+    } 
+    catch (error) {
+        res.status(500).json({ error: 'Error fetching documents Dealers1' });
     }
 });
 
