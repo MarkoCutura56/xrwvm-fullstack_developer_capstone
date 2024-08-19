@@ -28,10 +28,10 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS=['localhost','https://mcutura12-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/']
-CSRF_TRUSTED_ORIGINS=['https://mcutura12-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
-'https://mcutura12-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
-'https://mcutura12-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
+ALLOWED_HOSTS=['localhost','https://mcutura12-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/']#noqa
+CSRF_TRUSTED_ORIGINS=['https://mcutura12-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',#noqa
+'https://mcutura12-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai,#noqa
+'https://mcutura12-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']#noqa
 
 
 REST_FRAMEWORK = {
@@ -97,7 +97,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',#noqa
     },
     {
         'NAME':
