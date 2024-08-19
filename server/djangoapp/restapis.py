@@ -1,4 +1,4 @@
-# Uncomment the imports below before you add the function code
+# noqa
 import requests
 import os
 from dotenv import load_dotenv
