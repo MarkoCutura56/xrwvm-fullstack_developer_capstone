@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse # noqa
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect # noqa
 from django.contrib.auth import logout
-from django.contrib import messages
-from datetime import datetime
+from django.contrib import messages # noqa
+from datetime import datetime # noqa
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
@@ -18,6 +18,7 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 logger = logging.getLogger(__name__)
 @csrf_exempt
 
+
 def login_user(request):
     data = json.loads(request.body)
     username = data['userName']
@@ -29,11 +30,16 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
+
 def logout_request(request):
     logout(request)
     data = {"userName":""}
     return JsonResponse(data)
+
+
 @csrf_exempt
+
+
 def registration(request):
     context = {}
 
