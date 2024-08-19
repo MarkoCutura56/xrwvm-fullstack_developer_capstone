@@ -16,7 +16,9 @@
   },
   
  "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": 6,
+    "esversion": 6
   }
+  
 }
   
