@@ -16,7 +16,7 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 
 
 logger = logging.getLogger(__name__)
-@csrf_exempt
+@csrf_exempt # noqa
 
 
 def login_user(request):
@@ -37,7 +37,7 @@ def logout_request(request):
     return JsonResponse(data)
 
 
-@csrf_exempt
+@csrf_exempt # noqa
 
 
 def registration(request):
@@ -65,15 +65,7 @@ def registration(request):
     else :
         data = {"userName":username,"error":"Already Registered"}
         return JsonResponse(data)
-# @csrf_exempt
-# def registration(request):
-# ...
-
-# # Update the `get_dealerships` view to render the index page with
-# a list of dealerships
-# def get_dealerships(request):
-# ...
-#Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+# @csrf_exempt # noqa
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = '/fetchDealers/'
