@@ -31,16 +31,11 @@ def login_user(request):
 
 def logout_request(request):
     logout(request)
-    data = {"userName":""}
+    data = {"userName": ""}
     return JsonResponse(data)
-
-
 @csrf_exempt # noqa
-
-
 def registration(request):
     context = {}
-
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
@@ -58,10 +53,10 @@ def registration(request):
     if not username_exist:
         user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,password=password, email=email)
         login(request, user)
-        data = {"userName":username,"status":"Authenticated"}
+        data = {"userName":username,"status": "Authenticated"}
         return JsonResponse(data)
     else :
-        data = {"userName":username,"error":"Already Registered"}
+        data = {"userName":username,"error": "Already Registered"}
         return JsonResponse(data)
 # @csrf_exempt # noqa
 def get_dealerships(request, state="All"):
@@ -69,17 +64,16 @@ def get_dealerships(request, state="All"):
         endpoint = '/fetchDealers/'
     else:
         endpoint = '/fetchDealers/'+state
-        
     dealerships = get_request(endpoint)
-    return JsonResponse({"status":200,"dealers":dealerships})
+    return JsonResponse({"status": 200,"dealers": dealerships})
 
 def get_dealer_details(request, dealer_id):
     if(dealer_id):
         endpoint = "/fetchDealer/"+str(dealer_id)
         dealership = get_request(endpoint)
-        return JsonResponse({"status":200,"dealer":dealership})
+        return JsonResponse({"status": 200,"dealer": dealership})
     else:
-        return JsonResponse({"status":400,"message":"Bad Request"})
+        return JsonResponse({"status": 400,"message": "Bad Request"})
 
 def get_dealer_reviews(request, dealer_id):
     # if dealer id has been provided
@@ -90,9 +84,9 @@ def get_dealer_reviews(request, dealer_id):
             response = analyze_review_sentiments(review_detail['review'])
             print(response)
             review_detail['sentiment'] = response['sentiment']
-        return JsonResponse({"status":200,"reviews":reviews})
+        return JsonResponse({"status": 200,"reviews": reviews})
     else:
-        return JsonResponse({"status":400,"message":"Bad Request"})
+        return JsonResponse({"status": 400,"message": "Bad Request"})
 
 def get_cars(request):
     count = CarMake.objects.filter().count()
@@ -110,8 +104,8 @@ def add_review(request):
         data = json.loads(request.body)
         try:
             response = post_review(data)
-            return JsonResponse({"status":200})
+            return JsonResponse({"status": 200})
         except:# noqa
-            return JsonResponse({"status":401,"message":"Error in posting review"})
+            return JsonResponse({"status": 401,"message": "Error in posting review"})
     else:
-        return JsonResponse({"status":403,"message":"Unauthorized"})
+        return JsonResponse({"status": 403,"message": "Unauthorized"})
